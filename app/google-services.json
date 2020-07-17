@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1031725826469",
+    "firebase_url": "https://capstone-project-583ea.firebaseio.com",
+    "project_id": "capstone-project-583ea",
+    "storage_bucket": "capstone-project-583ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031725826469:android:4bc7f708b4245f5c58684c",
+        "android_client_info": {
+          "package_name": "com.example.capstonandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDggtGL3ZMrUUK4GhpTmogRYXPc8jIBEVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031725826469:android:d011d24b46ed29c958684c",
+        "android_client_info": {
+          "package_name": "com.example.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDggtGL3ZMrUUK4GhpTmogRYXPc8jIBEVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031725826469:android:246cd4b83c28729b58684c",
+        "android_client_info": {
+          "package_name": "com.example.inventorymanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDggtGL3ZMrUUK4GhpTmogRYXPc8jIBEVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031725826469-vact460p3mqta97j0bepgsff0n251b3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
