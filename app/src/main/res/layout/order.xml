@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:padding="10dp"
+            android:background="#F2F2F7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_back"
+                android:src="@drawable/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:text="Create Order"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:padding="2dp"
+                android:src="@drawable/more"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+
+        <View
+            android:background="#DBDBDB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Select Address:"
+                android:textSize="14sp"
+                android:paddingTop="10dp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/rg_address"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rd_hanoi"
+                    android:text="Ngoc Hà, Ba Đình , Hà Nội"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/rd_ninhbinh"
+                    android:text="Ninh Bình"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/rd_addAddress"
+                    android:text="Add new address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/addAddressBoundView"
+            android:visibility="gone"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/address_edt"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:hint="Địa chỉ chi tiết"
+                android:textColorHint="@color/colorBlack" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Select Payment Method:"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/rg_creditOrCod"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_creditCard"
+                    android:text="Credit Card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioGroup
+                    android:id="@+id/rg_creditCardNumber"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_firstCard"
+                        android:text="xxxx xxxx 357"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/rb_secondCard"
+                        android:text="xxxx xxxx 149"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/rb_newCard"
+                        android:text="Add new credit card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:id="@+id/addCreditCardView"
+                        android:visibility="gone"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/card_edt"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content"
+                            android:hint="Nhập số thẻ"
+                            android:textColorHint="@color/colorBlack" />
+                    </RelativeLayout>
+                </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rb_cod"
+                    android:text="COD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:paddingBottom="50dp"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorWhite"
+            android:layout_marginLeft="20dp"
+            android:text="Cancle"
+            android:textAllCaps="false"
+            android:layout_width="80dp"
+            android:layout_height="40dp"/>
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorGreen"
+            android:textColor="@color/colorWhite"
+            android:textAllCaps="false"
+            android:text="Confirm"
+            android:layout_marginRight="20dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
