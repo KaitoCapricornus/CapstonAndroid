@@ -8,14 +8,32 @@ public class Product {
     private int unitInStock;
     private int unitPrice;
     private boolean isDeleted;
+    private String description;
 
-    public Product(String productName, String catalog, String productImage, int unitInStock, int unitPrice, boolean isDeleted) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog;
+    }
+
+    public Product(String productName, String catalog, String productImage, int unitInStock, int unitPrice, boolean isDeleted, String description) {
         this.productName = productName;
         this.catalog = catalog;
         this.productImage = productImage;
         this.unitInStock = unitInStock;
         this.unitPrice = unitPrice;
         this.isDeleted = isDeleted;
+        this.description = description;
     }
 
     public Product() {

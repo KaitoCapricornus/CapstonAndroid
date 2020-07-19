@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.example.capstonandroid.entity.Product;
 import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +36,7 @@ public class ProductDB {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Map<String, Product> td = (HashMap<String, Product>) snapshot.getValue();
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     Product product = ds.getValue(Product.class);
                     output.add(product);
                 }
@@ -53,33 +52,17 @@ public class ProductDB {
     }
 
     public void getProductByID(final MyCallbackInterface<Product> callback, String id) {
-        final String temp_id = id;
-        ref.orderByChild("productID").equalTo(id).addValueEventListener(new ValueEventListener() {
-
-            /**
-             * This method will be called with a snapshot of the data at this location. It will also be called
-             * each time that data changes.
-             *
-             * @param snapshot The current data at the location
-             */
+        ref.orderByChild("productID").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot d : snapshot.getChildren()) {
-                    Product p = d.getValue(Product.class);
-                    callback.onCallBack(p);
+                for(DataSnapshot child : snapshot.getChildren()){
+                    Product product = child.getValue(Product.class);
+                    callback.onCallBack(product);
                     break;
                 }
+                Log.i("p", snapshot.getValue(Product.class) + "");
             }
 
-            /**
-             * This method will be triggered in the event that this listener either failed at the server, or
-             * is removed as a result of the security and Firebase Database rules. For more information on
-             * securing your data, see: <a
-             * href="https://firebase.google.com/docs/database/security/quickstart" target="_blank"> Security
-             * Quickstart</a>
-             *
-             * @param error A description of the error that occurred
-             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

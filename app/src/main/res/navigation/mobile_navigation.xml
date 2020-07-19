@@ -36,8 +36,18 @@
         tools:layout="@layout/fragment_about" />
 
     <fragment
-        android:id="@+id/nav_help"
-        android:name="com.example.capstonandroid.ui.order.OrderFragment"
-        android:label="@string/menu_help"
-        tools:layout="@layout/fragment_help" />
+        android:id="@+id/navigation_detail"
+        android:name="com.example.capstonandroid.ui.product.ui.detail.DetailFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/navigation_comment"
+        android:name="com.example.capstonandroid.ui.product.ui.comment.CommentFragment"
+        android:label="@string/title_judge"
+        tools:layout="@layout/fragment_comment" />
+    <fragment
+        android:id="@+id/navigation_relate"
+        android:name="com.example.capstonandroid.ui.product.ui.relate.RelateFragment"
+        android:label="@string/title_relate"
+        tools:layout="@layout/fragment_relate" />
 </navigation>

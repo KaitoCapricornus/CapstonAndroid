@@ -51,6 +51,13 @@
                 android:text="TextView"
                 android:textSize="19sp" />
 
+            <TextView
+                android:id="@+id/textViewProductID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="gone" />
+
         </LinearLayout>
 
     </LinearLayout>

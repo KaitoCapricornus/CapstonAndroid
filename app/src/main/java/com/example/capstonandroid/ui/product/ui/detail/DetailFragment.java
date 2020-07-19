@@ -1,5 +1,6 @@
 package com.example.capstonandroid.ui.product.ui.detail;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,27 +21,36 @@ import com.example.capstonandroid.ui.product.ProductActivity;
 
 public class DetailFragment extends Fragment {
 
-    private DetailViewModel homeViewModel;
+    private DetailViewModel detailViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
+        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
         View root = inflater.inflate(R.layout.fragment_product, container, false);
         ProductActivity activity = (ProductActivity) getActivity();
         String productID = activity.getProduct();
-        homeViewModel.setProductID(productID);
 
-        final ImageView image = root.findViewById(R.id.imageViewProductImage);
+        final ImageView image = root.findViewById(R.id.imageViewProduct);
         final TextView productName = root.findViewById(R.id.textViewProductNameDetail);
-        final TextView productPrice = root.findViewById(R.id.textViewProductPrice);
+        final TextView productPrice = root.findViewById(R.id.textViewProductPriceDetail);
+        final TextView status = root.findViewById(R.id.textViewStatus);
+        final TextView description = root.findViewById(R.id.textViewDescription);
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<Product>() {
+        detailViewModel.getText(productID).observe(getViewLifecycleOwner(), new Observer<Product>() {
             @Override
             public void onChanged(@Nullable Product s) {
                 DownloadImageAsyncTask imageAsyncTask = new DownloadImageAsyncTask(image);
                 imageAsyncTask.execute(s.getProductImage());
                 productName.setText(s.getProductName());
-                productPrice.setText(s.getUnitPrice());
+                productPrice.setText("Price: $" + s.getUnitPrice());
+                if(s.getUnitInStock() > 0){
+                    status.setText("Available");
+                    status.setTextColor(Color.GREEN);
+                }else{
+                    status.setText("Unavailable");
+                    status.setTextColor(Color.RED);
+                }
+                description.setText(s.getDescription());
             }
         });
         return root;

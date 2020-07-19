@@ -7,13 +7,13 @@
         android:title="@string/title_detail" />
 
     <item
-        android:id="@+id/navigation_judge"
+        android:id="@+id/navigation_comment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_judge" />
 
     <item
         android:id="@+id/navigation_relate"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_comment" />
+        android:title="@string/title_relate" />
 
 </menu>

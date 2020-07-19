@@ -17,5 +17,5 @@
     <string name="title_activity_product">Sản phẩm</string>
     <string name="title_detail">Tổng quan</string>
     <string name="title_judge">Đánh giá &#38; nhận xét</string>
-    <string name="title_comment">Liên quan</string>
+    <string name="title_relate">Liên quan</string>
 </resources>

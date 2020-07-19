@@ -11,24 +11,18 @@ import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
 public class DetailViewModel extends ViewModel {
 
     private MutableLiveData<Product> mData;
-    private String productID;
 
     public DetailViewModel() {
         mData = new MutableLiveData<>();
-        ProductDB db = new ProductDB("inventory/products");
+    }
+
+    public LiveData<Product> getText(String productID) {ProductDB db = new ProductDB("inventory/products");
         db.getProductByID(new MyCallbackInterface<Product>() {
             @Override
             public void onCallBack(Product value) {
                 mData.setValue(value);
             }
         }, productID);
-    }
-
-    public LiveData<Product> getText() {
         return mData;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
     }
 }

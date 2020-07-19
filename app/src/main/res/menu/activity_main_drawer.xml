@@ -24,9 +24,5 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_about" />
-        <item
-            android:id="@+id/nav_help"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_help" />
     </group>
 </menu>
