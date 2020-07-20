@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.search.SearchActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerProductView"
+        android:id="@+id/recyclerProductSearchView"
         android:layout_width="409dp"
         android:layout_height="634dp"
         android:clickable="true"
@@ -19,26 +19,26 @@
         app:layout_constraintVertical_bias="0.97" />
 
     <EditText
-        android:id="@+id/editTextSearch"
+        android:id="@+id/editTextSearchResult"
         android:layout_width="311dp"
         android:layout_height="44dp"
         android:ems="10"
         android:hint="Search..."
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerProductView"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerProductSearchView"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSearchResult"
         app:layout_constraintHorizontal_bias="0.695"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/buttonSearch"
+        android:id="@+id/buttonSearchResult"
         android:layout_width="74dp"
         android:layout_height="44dp"
         android:text="Search"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerProductView"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerProductSearchView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent"

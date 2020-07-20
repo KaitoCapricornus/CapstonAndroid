@@ -40,7 +40,27 @@ public class ProductDB {
                     Product product = ds.getValue(Product.class);
                     output.add(product);
                 }
-                Log.i("catalog", td.toString());
+                callback.onCallBack(output);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void getAllProductsByName(final MyCallbackInterface<List<Product>> callback, String name) {
+        final List<Product> output = new ArrayList<>();
+        ref.child("products").startAt(name).endAt(name + "\uf8ff")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, Product> td = (HashMap<String, Product>) snapshot.getValue();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Product product = ds.getValue(Product.class);
+                    output.add(product);
+                }
                 callback.onCallBack(output);
             }
 

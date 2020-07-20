@@ -41,12 +41,16 @@ public class DetailFragment extends Fragment {
             public void onChanged(@Nullable Product s) {
                 DownloadImageAsyncTask imageAsyncTask = new DownloadImageAsyncTask(image);
                 imageAsyncTask.execute(s.getProductImage());
-                productName.setText(s.getProductName());
+                if (s.getProductName().length() > 15) {
+                    productName.setText(s.getProductName().substring(0, 15).concat("..."));
+                } else {
+                    productName.setText(s.getProductName());
+                }
                 productPrice.setText("Price: $" + s.getUnitPrice());
-                if(s.getUnitInStock() > 0){
+                if (s.getUnitInStock() > 0) {
                     status.setText("Available");
                     status.setTextColor(Color.GREEN);
-                }else{
+                } else {
                     status.setText("Unavailable");
                     status.setTextColor(Color.RED);
                 }

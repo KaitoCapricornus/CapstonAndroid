@@ -22,12 +22,15 @@
             android:id="@+id/imageViewProductImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="15dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
             android:id="@+id/subRowLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
             android:orientation="vertical">
 
             <TextView
