@@ -52,7 +52,7 @@ public class ProductDB {
 
     public void getAllProductsByName(final MyCallbackInterface<List<Product>> callback, String name) {
         final List<Product> output = new ArrayList<>();
-        ref.child("products").startAt(name).endAt(name + "\uf8ff")
+        ref.child("products").orderByChild("productName").equalTo(name)
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

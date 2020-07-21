@@ -18,4 +18,6 @@
     <string name="title_detail">Tổng quan</string>
     <string name="title_judge">Đánh giá &#38; nhận xét</string>
     <string name="title_relate">Liên quan</string>
+    <string name="register"><u>Register</u></string>
+    <string name="fogotpass"><u>Forgot Password</u></string>
 </resources>

@@ -32,14 +32,4 @@ public class HomeViewModel extends ViewModel {
         return mProduct;
     }
 
-    public LiveData<List<Product>> getDataByName(String name) {
-        ProductDB db = new ProductDB("inventory/products");
-        db.getAllProductsByName(new MyCallbackInterface<List<Product>>() {
-            @Override
-            public void onCallBack(List<Product> value) {
-                mProduct.setValue(value);
-            }
-        }, name);
-        return mProduct;
-    }
 }

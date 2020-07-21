@@ -47,14 +47,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-            homeViewModel.getData().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
-                @Override
-                public void onChanged(@Nullable List<Product> s) {
-                    RecyclerProductAdapter adapter = new RecyclerProductAdapter(s, container.getContext());
-                    listViewProducts.setAdapter(adapter);
-                    listViewProducts.setLayoutManager(new LinearLayoutManager(getActivity()));
-                }
-            });
+        homeViewModel.getData().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
+            @Override
+            public void onChanged(@Nullable List<Product> s) {
+                RecyclerProductAdapter adapter = new RecyclerProductAdapter(s, container.getContext());
+                listViewProducts.setAdapter(adapter);
+                listViewProducts.setLayoutManager(new LinearLayoutManager(getActivity()));
+            }
+        });
         return root;
     }
 

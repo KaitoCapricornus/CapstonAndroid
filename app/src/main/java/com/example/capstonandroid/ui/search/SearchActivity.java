@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +23,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        final RecyclerView listViewProducts = findViewById(R.id.recyclerProductSearchView);
+        final RecyclerView listViewProducts = findViewById(R.id.recyclerProductSearch);
         final EditText search = findViewById(R.id.editTextSearchResult);
         final Button searchButton = findViewById(R.id.buttonSearchResult);
         search.setText(getIntent().getStringExtra("searchText"));
