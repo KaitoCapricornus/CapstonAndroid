@@ -18,14 +18,6 @@ public class Product {
         this.description = description;
     }
 
-    public String getCatalog() {
-        return catalog;
-    }
-
-    public void setCatalog(String catalog) {
-        this.catalog = catalog;
-    }
-
     public Product(String productName, String catalog, String productImage, int unitInStock, int unitPrice, boolean isDeleted, String description) {
         this.productName = productName;
         this.catalog = catalog;
@@ -55,11 +47,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getCatalogs() {
+    public String getCatalog() {
         return catalog;
     }
 
-    public void setCatalogs(String catalog) {
+    public void setCatalog(String catalog) {
         this.catalog = catalog;
     }
 
@@ -98,7 +90,7 @@ public class Product {
     public void copyFrom(Product from){
         this.setProductID(from.getProductID());
         this.setProductName(from.getProductName());
-        this.setCatalogs(from.getCatalogs());
+        this.setCatalog(from.getCatalog());
         this.setProductImage(from.getProductImage());
         this.setUnitInStock(from.getUnitInStock());
         this.setUnitPrice(from.getUnitPrice());

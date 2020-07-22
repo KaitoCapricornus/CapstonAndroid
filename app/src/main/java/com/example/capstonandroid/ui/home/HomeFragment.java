@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.capstonandroid.R;
 import com.example.capstonandroid.adapter.RecyclerProductAdapter;
 import com.example.capstonandroid.entity.Product;
-import com.example.capstonandroid.ui.search.SearchActivity;
+import com.example.capstonandroid.ui.search.SearchProductsActivity;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String searchText = search.getText().toString();
-                Intent intent = new Intent(container.getContext(), SearchActivity.class);
+                Intent intent = new Intent(container.getContext(), SearchProductsActivity.class);
                 intent.putExtra("searchText", searchText);
                 startActivity(intent);
             }

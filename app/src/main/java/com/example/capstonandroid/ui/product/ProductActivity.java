@@ -18,7 +18,6 @@ import androidx.navigation.ui.NavigationUI;
 public class ProductActivity extends AppCompatActivity {
 
     private String productID;
-    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

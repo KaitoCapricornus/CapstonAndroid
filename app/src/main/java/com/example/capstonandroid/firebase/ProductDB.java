@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.capstonandroid.entity.Catalog;
 import com.example.capstonandroid.entity.Product;
 import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,6 @@ public class ProductDB {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Map<String, Product> td = (HashMap<String, Product>) snapshot.getValue();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Product product = ds.getValue(Product.class);
                     output.add(product);
@@ -50,16 +50,37 @@ public class ProductDB {
         });
     }
 
-    public void getAllProductsByName(final MyCallbackInterface<List<Product>> callback, String name) {
+    public void getAllProductsByName(final MyCallbackInterface<List<Product>> callback, final String name) {
         final List<Product> output = new ArrayList<>();
-        ref.child("products").orderByChild("productName").equalTo(name)
-                .addValueEventListener(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Map<String, Product> td = (HashMap<String, Product>) snapshot.getValue();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Product product = ds.getValue(Product.class);
-                    output.add(product);
+                    if(product.getProductName().toLowerCase().contains(name.toLowerCase())){
+                        output.add(product);
+                    }
+                }
+                callback.onCallBack(output);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void getAllProductsByCatalogID(final MyCallbackInterface<List<Product>> callback, final String catalogID) {
+        final List<Product> output = new ArrayList<>();
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Product product = ds.getValue(Product.class);
+                    if(product.getCatalog().toLowerCase().equals(catalogID.toLowerCase())){
+                        output.add(product);
+                    }
                 }
                 callback.onCallBack(output);
             }

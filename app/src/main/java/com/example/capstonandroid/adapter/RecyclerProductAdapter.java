@@ -98,8 +98,6 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     Intent intent = new Intent(context, ProductActivity.class);
                     intent.putExtra("data", productID.getText().toString());
-                    Log.i("id", productID.getText().toString());
-
                     context.startActivity(intent);
                 }
             });

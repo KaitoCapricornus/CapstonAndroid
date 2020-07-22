@@ -17,31 +17,41 @@ import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
 
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchProductsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_product);
+
+
         final RecyclerView listViewProducts = findViewById(R.id.recyclerProductSearch);
         final EditText search = findViewById(R.id.editTextSearchResult);
         final Button searchButton = findViewById(R.id.buttonSearchResult);
-        search.setText(getIntent().getStringExtra("searchText"));
+        final ProductDB db = new ProductDB("inventory/products");
+        String searchText = getIntent().getStringExtra("searchText");
+        search.setText(searchText);
         searchButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String searchText = search.getText().toString();
-                //recreate activity with new searchText
+                db.getAllProductsByName(new MyCallbackInterface<List<Product>>(){
+                    @Override
+                    public void onCallBack(List<Product> value) {
+                        RecyclerProductAdapter adapter = new RecyclerProductAdapter(value, SearchProductsActivity.this);
+                        listViewProducts.setAdapter(adapter);
+                        listViewProducts.invalidate();
+                    }
+                }, search.getText().toString());
             }
         });
-        ProductDB db = new ProductDB("inventory/products");
+
         db.getAllProductsByName(new MyCallbackInterface<List<Product>>(){
             @Override
             public void onCallBack(List<Product> value) {
-                RecyclerProductAdapter adapter = new RecyclerProductAdapter(value, SearchActivity.this);
+                RecyclerProductAdapter adapter = new RecyclerProductAdapter(value, SearchProductsActivity.this);
                 listViewProducts.setAdapter(adapter);
-                listViewProducts.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+                listViewProducts.setLayoutManager(new LinearLayoutManager(SearchProductsActivity.this));
             }
         }, search.getText().toString());
 
