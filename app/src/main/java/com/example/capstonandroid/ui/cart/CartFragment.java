@@ -15,15 +15,15 @@ import com.example.capstonandroid.R;
 
 public class CartFragment extends Fragment {
 
-    private CartViewModel productsViewModel;
+    private CartViewModel cartViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        productsViewModel =
+        cartViewModel =
                 ViewModelProviders.of(this).get(CartViewModel.class);
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
         //final TextView textView = root.findViewById(R.id.text_gallery);
-        productsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        cartViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);

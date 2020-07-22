@@ -11,13 +11,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.capstonandroid.R;
@@ -45,7 +42,7 @@ public class OrderFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         orderViewModel =
                 ViewModelProviders.of(this).get(OrderViewModel.class);
-        View root = inflater.inflate(R.layout.order, container, false);
+        View root = inflater.inflate(R.layout.fragment_order_dung, container, false);
         rb_creditCard = root.findViewById(R.id.rb_creditCard);
         rb_cod = root.findViewById(R.id.rb_cod);
         rb_firstCard = root.findViewById(R.id.rb_firstCard);
