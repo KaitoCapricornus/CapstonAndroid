@@ -18,6 +18,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.capstonandroid.R;
+import com.example.capstonandroid.entity.Address;
+import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
+
+import java.util.List;
 
 public class OrderFragment extends Fragment {
 
@@ -34,6 +38,7 @@ public class OrderFragment extends Fragment {
     private RelativeLayout addCreditCardView;
     private EditText address_edt;
     private Button confirm_button;
+    private Button rd_hanoi;
     private String address;
     private String paymentMethod;
     private String creditCardNumber;
@@ -42,7 +47,14 @@ public class OrderFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         orderViewModel =
                 ViewModelProviders.of(this).get(OrderViewModel.class);
+        orderViewModel.callback = new MyCallbackInterface<List<Address>>() {
+            @Override
+            public void onCallBack(List<Address> value) {
+                rd_hanoi.setText(orderViewModel.getData().getValue().get(0).address);
+            }
+        };
         View root = inflater.inflate(R.layout.fragment_order_dung, container, false);
+        rd_hanoi = root.findViewById(R.id.rd_hanoi);
         rb_creditCard = root.findViewById(R.id.rb_creditCard);
         rb_cod = root.findViewById(R.id.rb_cod);
         rb_firstCard = root.findViewById(R.id.rb_firstCard);
@@ -158,6 +170,8 @@ public class OrderFragment extends Fragment {
                 Toast.makeText(getContext(), "Dữ liệu đơn hàng đã được lưu lại", Toast.LENGTH_LONG).show();
             }
         });
+
+        // rd_hanoi.setText(orderViewModel.getData().getValue().get(0).address);
         return root;
     }
 }
