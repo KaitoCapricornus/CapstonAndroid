@@ -67,8 +67,8 @@ public class CatalogDB {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot child : snapshot.getChildren()){
-                    Catalog product = child.getValue(Catalog.class);
-                    callback.onCallBack(product);
+                    Catalog catalog = child.getValue(Catalog.class);
+                    callback.onCallBack(catalog);
                     break;
                 }
             }

@@ -17,11 +17,12 @@ public class CatalogDetailViewModel extends ViewModel {
     private MutableLiveData<Catalog> catalogDetailViewModel;
 
     public CatalogDetailViewModel() {
+        catalogDetailViewModel = new MutableLiveData<>();
         mCatalog = new MutableLiveData<>();
     }
 
     public LiveData<List<Product>> getData(String catalogID) {
-        ProductDB db = new ProductDB("inventory/catalogs");
+        ProductDB db = new ProductDB("inventory/products");
         db.getAllProductsByCatalogID(new MyCallbackInterface<List<Product>>() {
             @Override
             public void onCallBack(List<Product> value) {
