@@ -3,7 +3,7 @@ package com.example.capstonandroid.entity;
 public class Product {
     private String productID;
     private String productName;
-    private String catalog;
+    private String catalogs;
     private String productImage;
     private int unitInStock;
     private int unitPrice;
@@ -18,9 +18,9 @@ public class Product {
         this.description = description;
     }
 
-    public Product(String productName, String catalog, String productImage, int unitInStock, int unitPrice, boolean isDeleted, String description) {
+    public Product(String productName, String catalogs, String productImage, int unitInStock, int unitPrice, boolean isDeleted, String description) {
         this.productName = productName;
-        this.catalog = catalog;
+        this.catalogs = catalogs;
         this.productImage = productImage;
         this.unitInStock = unitInStock;
         this.unitPrice = unitPrice;
@@ -47,12 +47,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getCatalog() {
-        return catalog;
+    public String getCatalogs() {
+        return catalogs;
     }
 
-    public void setCatalog(String catalog) {
-        this.catalog = catalog;
+    public void setCatalogs(String catalogs) {
+        this.catalogs = catalogs;
     }
 
     public String getProductImage() {
@@ -90,7 +90,7 @@ public class Product {
     public void copyFrom(Product from){
         this.setProductID(from.getProductID());
         this.setProductName(from.getProductName());
-        this.setCatalog(from.getCatalog());
+        this.setCatalogs(from.getCatalogs());
         this.setProductImage(from.getProductImage());
         this.setUnitInStock(from.getUnitInStock());
         this.setUnitPrice(from.getUnitPrice());

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.capstonandroid.entity.Catalog;
 import com.example.capstonandroid.entity.Product;
 import com.example.capstonandroid.firebaseinterface.MyCallbackInterface;
 import com.google.firebase.database.DataSnapshot;
@@ -14,9 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductDB {
     private String referencePath;
@@ -78,7 +75,7 @@ public class ProductDB {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Product product = ds.getValue(Product.class);
-                    if(product.getCatalog().toLowerCase().equals(catalogID.toLowerCase())){
+                    if(product.getCatalogs().toLowerCase().equals(catalogID.toLowerCase())){
                         output.add(product);
                     }
                 }

@@ -49,13 +49,13 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         DownloadImageAsyncTask asyncTask = new DownloadImageAsyncTask(temp.productImage);
         asyncTask.execute(products.get(position).getProductImage());
         temp.productName.setText(products.get(position).getProductName());
-        temp.productPrice.setText(products.get(position).getUnitPrice() + "");
+        temp.productPrice.setText("Price: " + products.get(position).getUnitPrice() + "$");
         int unitQuantity = products.get(position).getUnitInStock();
         if (unitQuantity > 0) {
-            temp.productStatus.setText("Còn hàng");
+            temp.productStatus.setText("Available");
             temp.productStatus.setTextColor(Color.GREEN);
         } else {
-            temp.productStatus.setText("Hết hàng");
+            temp.productStatus.setText("Out of stock");
             temp.productStatus.setTextColor(Color.RED);
         }
 

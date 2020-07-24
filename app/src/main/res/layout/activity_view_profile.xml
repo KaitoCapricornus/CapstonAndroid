@@ -54,7 +54,7 @@
 <!--                android:src="@drawable/icon_user" />-->
 
             <RelativeLayout
-                android:id="@+id/profile_layout"
+                android:id="@+id/imgEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_cover_image"
@@ -69,8 +69,20 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginRight="18dp"
+                    android:clickable="true"
+
+                    android:src="@android:drawable/ic_menu_edit" />
+
+                <ImageView
+                    android:id="@+id/edit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:clickable="true"
 
                     android:src="@android:drawable/ic_menu_edit" />
@@ -113,7 +125,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/profile_layout"
+                android:layout_below="@+id/imgEdit"
                 android:layout_margin="5dp"
                 android:layout_marginTop="5dp"
                 android:background="#fff"
@@ -207,6 +219,14 @@
                         android:layout_marginLeft="5dp" />
                 </RelativeLayout>
 
+                <TextView
+                    android:id="@+id/txtLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Log out"
+                    android:textColor="#FF0000" />
 
 
             </LinearLayout>

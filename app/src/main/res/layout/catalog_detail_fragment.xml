@@ -5,12 +5,12 @@
     android:id="@+id/catalog_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.catalogdetail.CatalogDetailFragment">
+    tools:context=".ui.catalogs.ui.catalogdetail.CatalogDetailFragment">
 
     <ImageView
         android:id="@+id/imageViewCatalogDetailImage"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,25 +28,28 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.227" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCatalogProduct"
-        android:layout_width="413dp"
-        android:layout_height="463dp"
+        android:layout_width="411dp"
+        android:layout_height="421dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCatalogDescription"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewCatalogDescription"
         android:layout_width="328dp"
         android:layout_height="47dp"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

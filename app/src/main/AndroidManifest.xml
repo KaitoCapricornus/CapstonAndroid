@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.catalogs.CatalogActivity"></activity>
+        <activity android:name=".ui.catalogs.CatalogActivity"/>
+        <activity android:name=".ProfileActivity"/>
         <activity android:name=".ui.search.SearchCatalogsActivity" />
         <activity android:name=".ui.search.SearchProductsActivity" />
+        <activity android:name=".EditProfile"/>
         <activity
             android:name=".ui.product.ProductActivity"
             android:label="@string/title_activity_product" />
@@ -30,7 +32,6 @@
         <activity android:name=".LoginMainActivity" />
         <activity android:name=".ForgotPassActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

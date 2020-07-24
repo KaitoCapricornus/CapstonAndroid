@@ -35,6 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("datalogin",MODE_PRIVATE);
         final SharedPreferences.Editor session = sharedPreferences.edit();
 
+        String loginData = sharedPreferences.getString("user_name", "");
+        if(!"".equals(loginData)){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return;
+        }
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

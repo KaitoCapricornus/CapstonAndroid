@@ -51,7 +51,7 @@ public class CatalogFragment extends Fragment {
             public void onChanged(@Nullable List<Catalog> s) {
                 RecyclerCatalogAdapter adapter = new RecyclerCatalogAdapter(s, container.getContext());
                 listViewCatalogs.setAdapter(adapter);
-                listViewCatalogs.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                listViewCatalogs.setLayoutManager(new GridLayoutManager(container.getContext(), 2, GridLayoutManager.VERTICAL, false));
             }
         });
         return root;

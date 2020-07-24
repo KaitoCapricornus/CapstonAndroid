@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,6 +73,9 @@ public class EditProfile extends AppCompatActivity {
                 session.putString("phone", txtPhone.getText().toString());
                 session.putString("user_name", txtUsername.getText().toString());
                 session.commit();
+                Toast.makeText(EditProfile.this, "Update Success!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(EditProfile.this, ProfileActivity.class);
+                startActivity(intent);
             }
         });
 
