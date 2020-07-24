@@ -107,4 +107,12 @@ public class ProductDB {
             }
         });
     }
+
+    public void updateProductByID( String productID, String object, String type, String value){
+        if(type.equals("int")){
+            ref.child(productID).child(object).setValue(Integer.parseInt(value));
+        } else if(type.equals("string")){
+            ref.child(productID).child(object).setValue(value);
+        }
+    }
 }

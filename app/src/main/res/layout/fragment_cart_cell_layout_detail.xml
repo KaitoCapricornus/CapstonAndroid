@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <Button
+                android:id="@+id/btn_title_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detail of Product"
+                android:textStyle="bold">
+
+            </Button>
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/img_dialog_detail"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="3dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_product_name_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_dialog_detail"
+                android:layout_below="@+id/btn_title_detail"
+                android:gravity="center"
+                android:hint="Title"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_catalogs_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_product_name_detail"
+                android:layout_toRightOf="@id/img_dialog_detail"
+                android:hint="Content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tv_unit_price_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_catalogs_detail"
+                android:layout_toRightOf="@id/img_dialog_detail"
+                android:hint="Price"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tv_unit_in_stock_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_unit_price_detail"
+                android:layout_toRightOf="@id/img_dialog_detail"
+                android:hint="Unit in Stock"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="10dp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
