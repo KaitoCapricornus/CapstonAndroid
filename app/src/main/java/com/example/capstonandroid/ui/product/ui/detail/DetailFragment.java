@@ -1,5 +1,7 @@
 package com.example.capstonandroid.ui.product.ui.detail;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +18,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.capstonandroid.R;
 import com.example.capstonandroid.asynctask.DownloadImageAsyncTask;
+import com.example.capstonandroid.entity.Cart;
 import com.example.capstonandroid.entity.Product;
+import com.example.capstonandroid.firebaseinterface.Auxiliary;
 import com.example.capstonandroid.ui.product.ProductActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetailFragment extends Fragment {
 
@@ -28,7 +36,7 @@ public class DetailFragment extends Fragment {
         detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
         View root = inflater.inflate(R.layout.fragment_product, container, false);
         ProductActivity activity = (ProductActivity) getActivity();
-        String productID = activity.getProduct();
+        final String productID = activity.getProduct();
 
         final ImageView image = root.findViewById(R.id.imageViewProduct);
         final TextView productName = root.findViewById(R.id.textViewProductNameDetail);
@@ -57,6 +65,56 @@ public class DetailFragment extends Fragment {
                 description.setText(s.getDescription());
             }
         });
+
+        final SharedPreferences sharedPref = getContext().getSharedPreferences("datalogin", Context.MODE_PRIVATE);
+        final String user_name = sharedPref.getString("user_name", "");
+
+        final FloatingActionButton floatingActionButton = root.findViewById(R.id.fabAddToCart);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                detailViewModel.getText(productID).observe(getViewLifecycleOwner(), new Observer<Product>() {
+                    @Override
+                    public void onChanged(@Nullable Product s) {
+                        //long
+
+                        int position = checkUserPosition(user_name, Auxiliary.carts);
+                        if(position != -1) {
+                            if(Auxiliary.carts.get(position).getProducts().size() != 0) {
+                                if (!isExistProductID(productID, position, Auxiliary.carts)) {
+                                    Auxiliary.cart.addProductToList(s, productID);
+                                    Auxiliary.carts.add(Auxiliary.cart);
+                                }
+                            } else {
+                                Auxiliary.cart.addProductToList(s, productID);
+                                Auxiliary.carts.add(Auxiliary.cart);
+                            }
+                        } else {
+                            Auxiliary.cart.addProductToList(s, productID);
+                            Auxiliary.carts.add(Auxiliary.cart);
+                        }
+                    }
+                });
+            }
+        });
         return root;
+    }
+
+    public boolean isExistProductID(String productID, int position, ArrayList<Cart> carts){
+        for(int i = 0; i < carts.get(position).getProducts().size(); i++){
+            if(carts.get(position).getProducts().get(i).getProductID().equalsIgnoreCase(productID)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int checkUserPosition(String UserName, List<Cart> carts){
+        for(int i = 0; i < carts.size(); i++){
+            if(carts.get(i).getUserName().equalsIgnoreCase(UserName)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
