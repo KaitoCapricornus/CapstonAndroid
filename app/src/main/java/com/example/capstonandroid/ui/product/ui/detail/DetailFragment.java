@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -93,6 +94,7 @@ public class DetailFragment extends Fragment {
                             Auxiliary.cart.addProductToList(s, productID);
                             Auxiliary.carts.add(Auxiliary.cart);
                         }
+
                     }
                 });
             }
