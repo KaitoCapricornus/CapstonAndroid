@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("datalogin",MODE_PRIVATE);
         final SharedPreferences.Editor session = sharedPreferences.edit();
 
-        String loginData = sharedPreferences.getString("user_name", "");
+        String loginData = sharedPreferences.getString("email", "");
 
         String email = sharedPreferences.getString("email", "");
         Auxiliary.carts = new ArrayList<>();
