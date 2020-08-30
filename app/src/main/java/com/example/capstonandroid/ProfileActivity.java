@@ -12,12 +12,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstonandroid.entity.User;
+
 
 public class ProfileActivity extends AppCompatActivity {
 
-
-    TextView name, mobileNumber, txtDoB, txtEmail, txtLogOut;
-    ImageView profile;
+    TextView name,mobileNumber,txtdob,txtemail, txtLogOut;
+    ImageView Profile;
+    //CircleImageView profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,8 @@ public class ProfileActivity extends AppCompatActivity {
         String user_name = sharedPref.getString("user_name", "");
         name.setText(user_name);
         mobileNumber.setText(phone);
-        txtDoB.setText(dob);
-        txtEmail.setText(email);
+        txtdob.setText(dob);
+        txtemail.setText(email);
         txtLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPref.edit();
                                 editor.clear();
                                 editor.commit();
-                                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(ProfileActivity.this,LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -55,10 +57,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        profile.setOnClickListener(new View.OnClickListener() {
+        Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, EditProfile.class);
+                Intent intent = new Intent(ProfileActivity.this,EditProfile.class);
                 startActivity(intent);
             }
         });
@@ -67,9 +69,9 @@ public class ProfileActivity extends AppCompatActivity {
     private void map() {
         name = findViewById(R.id.name);
         mobileNumber = findViewById(R.id.mobileNumber);
-        txtDoB = findViewById(R.id.dob);
-        txtEmail = findViewById(R.id.email);
-        txtLogOut = findViewById(R.id.txtLogout);
-        profile = findViewById(R.id.edit2);
+        txtdob = findViewById(R.id.dob);
+        txtemail = findViewById(R.id.email);
+        txtLogOut=findViewById(R.id.txtLogout);
+        Profile = findViewById(R.id.edit2);
     }
 }

@@ -94,7 +94,7 @@ public class DetailFragment extends Fragment {
                             Auxiliary.cart.addProductToList(s, productID);
                             Auxiliary.carts.add(Auxiliary.cart);
                         }
-
+                        Toast.makeText(getContext(), "Added to cart!", Toast.LENGTH_LONG).show();
                     }
                 });
             }

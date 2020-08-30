@@ -41,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences.Editor session = sharedPreferences.edit();
 
         String loginData = sharedPreferences.getString("user_name", "");
+
+        String email = sharedPreferences.getString("email", "");
+        Auxiliary.carts = new ArrayList<>();
+        Auxiliary.cart = new Cart(email);
         if(!"".equals(loginData)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -66,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String Email = email.getText().toString();
+                final String Email = LoginActivity.this.email.getText().toString();
                 final String Pass = pass.getText().toString();
                 final boolean[] check = {false};
                 processDialog.start();
@@ -83,12 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                                     session.putString("dob", ds.child("dob").getValue(String.class));
                                     session.putString("phone", ds.child("phone").getValue(String.class));
                                     session.putString("user_name", ds.child("username").getValue(String.class));
+                                    session.putString("UID", ds.getKey());
                                     session.commit();
-
-                                    final SharedPreferences sharedPref = getSharedPreferences("datalogin", Context.MODE_PRIVATE);
-                                    final String user_name = sharedPref.getString("user_name", "");
-                                    Auxiliary.carts = new ArrayList<>();
-                                    Auxiliary.cart = new Cart(user_name);
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);

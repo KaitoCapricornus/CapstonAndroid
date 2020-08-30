@@ -1,11 +1,13 @@
 package com.example.capstonandroid;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -20,12 +22,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Register extends AppCompatActivity {
+import java.util.Calendar;
+
+public class Register extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     ImageView user_image;
-    EditText username, email, phone, pass, confirmPass;
+    EditText username,email,phone,pass,confirmpass,txtDob;
     CheckBox agree;
-    Button register;
+    Button register, btnDob;
     boolean checkEmail = false;
     processDialog processDialog = new processDialog(this);
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/identity/Customer");
@@ -37,20 +41,28 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         map();
 
+        btnDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 processDialog.start();
-                final AlertDialog alertDialog = new AlertDialog.Builder(Register.this).create();
+                final AlertDialog alertDialog= new AlertDialog.Builder(Register.this).create();
                 String UserName = username.getText().toString();
                 final String Email = email.getText().toString();
                 String Phone = phone.getText().toString();
                 final String Pass = pass.getText().toString();
-                String confirmPass = Register.this.confirmPass.getText().toString();
+                String Confirmpass = confirmpass.getText().toString();
 
-                if (!TextUtils.isEmpty(UserName) && !TextUtils.isEmpty(Email) &&
-                        !TextUtils.isEmpty(confirmPass) && !TextUtils.isEmpty(Phone) && !TextUtils.isEmpty(Pass)) {
-                    if (!Pass.equals(confirmPass)) {
+                if(!TextUtils.isEmpty(UserName) && !TextUtils.isEmpty(Email) &&
+                        !TextUtils.isEmpty(Confirmpass) && !TextUtils.isEmpty(Phone) && !TextUtils.isEmpty(Pass)) {
+                    if (!Pass.equals(Confirmpass)) {
                         processDialog.end();
                         alertDialog.setTitle("Warning!");
                         alertDialog.setMessage("Password not match!");
@@ -62,7 +74,7 @@ public class Register extends AppCompatActivity {
                         alertDialog.show();
                     } else {
                         final User user = new User(UserName, Pass, Email, Phone, "25/07/1999");
-                        mListener = mDatabase.addValueEventListener(new ValueEventListener() {
+                        mListener=mDatabase.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot ds : snapshot.getChildren()) {
@@ -90,18 +102,18 @@ public class Register extends AppCompatActivity {
                                         return;
                                     }
                                 }
-                                if (!checkEmail) {
+                                if(!checkEmail){
                                     String userId = mDatabase.push().getKey();
                                     mDatabase.child(userId).setValue(user);
                                     processDialog.end();
                                     new AlertDialog.Builder(Register.this)
                                             .setTitle("Notification")
-                                            .setMessage("Register successfully! Please return Login!")
-                                            .setPositiveButton(android.R.string.yes, null)
+                                            .setMessage("Register successfully! Please return Login !")
+                                            .setPositiveButton(android.R.string.yes,null)
                                             .show();
                                     stopListener();
                                     processDialog.end();
-                                    Intent intent = new Intent(Register.this, LoginActivity.class);
+                                    Intent intent = new Intent(Register.this,LoginActivity.class);
                                     startActivity(intent);
                                     return;
                                 }
@@ -127,19 +139,32 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public void stopListener() {
+    public void stopListener(){
         mDatabase.removeEventListener(mListener);
     }
 
     private void map() {
+        btnDob=findViewById(R.id.btnDob);
+        txtDob=findViewById(R.id.txtDob);
         user_image = findViewById(R.id.user_image);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         pass = findViewById(R.id.pass);
-        confirmPass = findViewById(R.id.confirmpass);
+        confirmpass = findViewById(R.id.confirmpass);
         agree = findViewById(R.id.agree);
         register = findViewById(R.id.register);
+    }
+
+    private void showDatePickerDialog(){
+        DatePickerDialog d=new DatePickerDialog(this, this, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        d.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String date=dayOfMonth+"/"+(month+1)+"/"+year;
+        txtDob.setText(date);
     }
 }
 

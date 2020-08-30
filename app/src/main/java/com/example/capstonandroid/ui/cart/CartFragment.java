@@ -1,6 +1,7 @@
 package com.example.capstonandroid.ui.cart;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.example.capstonandroid.entity.Product;
 import com.example.capstonandroid.firebase.ProductDB;
 import com.example.capstonandroid.firebaseinterface.Auxiliary;
 import com.example.capstonandroid.firebaseinterface.QuantityChangeListener;
+import com.example.capstonandroid.ui.order.OrderActivityThuc;
 
 import java.util.List;
 
@@ -43,15 +45,8 @@ public class CartFragment extends Fragment implements QuantityChangeListener {
                 ViewModelProviders.of(this).get(CartViewModel.class);
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        cartViewModel.getData().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
-            @Override
-            public void onChanged(@Nullable List<Product> s) {
-
-            }
-        });
-
         final SharedPreferences sharedPref = getContext().getSharedPreferences("datalogin", Context.MODE_PRIVATE);
-        user_name = sharedPref.getString("user_name", "");
+        user_name = sharedPref.getString("email", "");
 
         tvLink = root.findViewById(R.id.tv_link);
         tvLink.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +113,8 @@ public class CartFragment extends Fragment implements QuantityChangeListener {
                     } else {
                         recyclerCartAdapter.notifyDataSetChanged();
                         Auxiliary.dialogStatus(getContext(), true, "Good good good! Cuối cùng cũng có thằng ngu nó mua");
+                        Intent intent = new Intent(getActivity(), OrderActivityThuc.class);
+                        startActivity(intent);
                     }
                 } else {
                     Auxiliary.dialogStatus(getContext(), false, "Đéo có sản phẩm nào đâu mà mua!");

@@ -1,6 +1,8 @@
 package com.example.capstonandroid.entity;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User implements Serializable {
     private String username;
@@ -49,15 +51,21 @@ public class User implements Serializable {
         this.dob = dob;
     }
 
-
-
-
-
     public User(String username, String pass, String email, String phone, String dob) {
         this.username = username;
         this.pass = pass;
         this.email = email;
         this.phone = phone;
         this.dob = dob;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> result = new HashMap<>();
+        result.put("dob", this.getDob());
+        result.put("email", this.getEmail());
+        result.put("phone", this.getPhone());
+        result.put("username", this.getUsername());
+        result.put("pass", this.getPass());
+        return result;
     }
 }

@@ -115,6 +115,32 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_edittext"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/txtDob"
+                android:layout_width="197dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:editable="false"
+                android:hint="Dob"
+                android:padding="10dp"
+                android:shadowColor="#000000" />
+
+            <Button
+                android:id="@+id/btnDob"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <CheckBox
